@@ -15,6 +15,12 @@ class Dashboard extends React.Component
         this.hideModal = this.hideModal.bind(this);
         this.modifyProduct = this.modifyProduct.bind(this);
         this.getProduct = this.getProduct.bind(this);
+        this.addProduct = this.addProduct.bind(this);
+    }
+
+    addProduct()
+    {
+        window.location.href = "/add";
     }
 
     getProduct(product)
@@ -60,14 +66,15 @@ class Dashboard extends React.Component
                 await axios.delete("http://localhost:5000/products/" + id);
             }
         }
-        let products = [];
-        await axios.get("http://localhost:5000/products")
-        .then(function(resp){
-            (resp.data).forEach(product => {
-               products.push(product);
-            });
-        });
-        this.setState({datas: products});
+        this.updateRows();
+        // let products = [];
+        // await axios.get("http://localhost:5000/products")
+        // .then(function(resp){
+        //     (resp.data).forEach(product => {
+        //        products.push(product);
+        //     });
+        // });
+        // this.setState({datas: products});
     }
 
     modifyProduct = async(p) =>
@@ -104,7 +111,7 @@ class Dashboard extends React.Component
                             Modifier
                         </Link>
                     </td>
-                    <td><button className="btn btn-danger">Supprimer</button></td> 
+                    <td><button className="btn btn-danger" onClick={(e) => context.deleteProduct(e, product.id)}>Supprimer</button></td> 
                 </tr>
             );
         })
@@ -112,10 +119,11 @@ class Dashboard extends React.Component
 
     render()
     {
-        return <div className="card mx-auto my-4" style={{width: "90%", borderRadius: "10px"}}>
+        return  <>
+                <div className="card mx-auto my-4" style={{ width: "90%", borderRadius: "10px" }}>
                     <h2 className="text-center card-title">Stock</h2>
                     <table className="table table-striped">
-                        <thead style={{backgroundColor: "black"}}>
+                        <thead  className="bg-dark">
                             <tr className="text-light">
                                 <th>Nom</th>
                                 <th>Prix(Ar)</th>
@@ -123,11 +131,16 @@ class Dashboard extends React.Component
                                 <th colSpan="2"></th>
                             </tr>
                         </thead>
-                        <tbody> 
-                        {this.renderRows()}     
+                        <tbody>
+                            {this.renderRows()}
                         </tbody>
                     </table>
                 </div>
+                <div className=" card mx-auto my-4" style={{ width: "90%", borderRadius: "10px" }}>
+                    <p className=" card-header bg-dark card-text text-center text-light lead">Ajouter un nouveau produit</p>
+                    <button className="btn btn-success offset-4 col-4 my-4" onClick={() => this.addProduct()}>Ajouter</button>
+                </div>
+                </>
     }
 }
 

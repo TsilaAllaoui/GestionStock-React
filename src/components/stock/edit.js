@@ -85,7 +85,7 @@ class Edit extends React.Component
                         </div>
                         <div className="card-body row mx-4">
                             <label className="lead col-sm-4 col-md-3 text-center">Quantite: </label>
-                            <input id="price" className="col-sm-8 col-md-9" type="text" defaultValue={this.state.product.quantity} onChange={(e) => this.setQuantity(e)}/>
+                            <input id="quantity" className="col-sm-8 col-md-9" type="text" defaultValue={this.state.product.quantity} onChange={(e) => this.setQuantity(e)}/>
                         </div>
                     </div>
                 </div>
