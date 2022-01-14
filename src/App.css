@@ -37,9 +37,12 @@
   }
 }
 
-
-
 #login-container{
   background-color: grey;
   padding: 20px;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th{
+  background-color:lightblue
 }

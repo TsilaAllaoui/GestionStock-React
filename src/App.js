@@ -1,11 +1,10 @@
-import { contains, get } from 'jquery';
 import React from 'react';
 import './App.css';
 import Login from "./components/login/login.js";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from './components/stock/dashboard';
 import Searchbar from './components/stock/searchbar';
-import Stock from './components/stock/stock';
+import Edit from './components/stock/edit';
 
 
 class App extends React.Component {
@@ -32,6 +31,7 @@ class App extends React.Component {
           <Route path="/searchbar">
             <Searchbar/>
           </Route>
+          <Route path="/edit" component={Edit}/>
           <Route path="/">
             <Login/>
           </Route>

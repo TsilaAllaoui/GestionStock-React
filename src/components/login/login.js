@@ -1,10 +1,7 @@
 import React from "react";
-import Searchbar from "../stock/searchbar";
-import {Input} from "antd";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
 import "react-bootstrap";
-import {Redirect} from "react-router-dom";
 
 class Login extends React.Component
 {
@@ -45,14 +42,12 @@ class Login extends React.Component
         const d = this.state.datas;
         for (let i=0; i<d.length; i++)
         {
-            if (d[i]. password == givenPassword.value)
+            if (d[i].password === givenPassword.value)
             {
                 passswordFound = true;
-                console.log("password match...")
-                if (d[i].username == givenUsername.value)
+                if (d[i].username === givenUsername.value)
                 {
                     usernameFound = true;
-                    console.log("username match...")
                     this.setState({datas: this.state.datas ,loggedId: d[i].id});
                     window.location.href = "/dashboard";
                     break;
@@ -85,8 +80,8 @@ class Login extends React.Component
                                 <button className="btn btn-danger mt-1 offset-5 col-4" onClick={ (e) => { e.preventDefault(); this.setNames("")} } style={{width: "20%"}}>Cancel</button>
                             </div>
                         </form>
-                        <div>
-                            <p className="alert alert-danger invisible" id="error" style={{color: "red"}}>{this.state.error}</p>
+                        <div className="row">
+                            <p className="alert alert-danger invisible offset-4 col-4" id="error" style={{color: "red"}}>{this.state.error}</p>
                         </div>
                     </div>
                 </div>

@@ -10,5 +10,25 @@
       "password": "321",
       "id": 1
     }
+  ],
+  "products": [
+    {
+      "name": "Huile 2T",
+      "price": 15000,
+      "quantity": 9,
+      "id": 0
+    },
+    {
+      "name": "Huile 4T",
+      "price": 25000,
+      "quantity": 5,
+      "id": 1
+    },
+    {
+      "name": "Graisse",
+      "price": 300,
+      "quantity": 7,
+      "id": 2
+    }
   ]
 }
