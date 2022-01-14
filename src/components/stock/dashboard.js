@@ -1,6 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
+import { RiFileAddLine } from "react-icons/ri";
 
 class Dashboard extends React.Component
 {
@@ -67,14 +70,6 @@ class Dashboard extends React.Component
             }
         }
         this.updateRows();
-        // let products = [];
-        // await axios.get("http://localhost:5000/products")
-        // .then(function(resp){
-        //     (resp.data).forEach(product => {
-        //        products.push(product);
-        //     });
-        // });
-        // this.setState({datas: products});
     }
 
     modifyProduct = async(p) =>
@@ -103,15 +98,19 @@ class Dashboard extends React.Component
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.quantity}</td>
-                    <td>
+                    <td className="text-center">
                         <Link to={{
                                     pathname: "/edit", 
                                     state: {product: product}} 
                                 } className="btn btn-primary">
-                            Modifier
+                            <FaEdit size={23}/>
                         </Link>
                     </td>
-                    <td><button className="btn btn-danger" onClick={(e) => context.deleteProduct(e, product.id)}>Supprimer</button></td> 
+                    <td>
+                        <button className="btn btn-danger text-center" onClick={(e) => context.deleteProduct(e, product.id)}>
+                            <MdDeleteOutline size={23}/>
+                        </button>
+                    </td> 
                 </tr>
             );
         })
@@ -137,8 +136,12 @@ class Dashboard extends React.Component
                     </table>
                 </div>
                 <div className=" card mx-auto my-4" style={{ width: "90%", borderRadius: "10px" }}>
-                    <p className=" card-header bg-dark card-text text-center text-light lead">Ajouter un nouveau produit</p>
-                    <button className="btn btn-success offset-4 col-4 my-4" onClick={() => this.addProduct()}>Ajouter</button>
+                    <div className=" card-header bg-dark row rounded-1">
+                        <p className="card-text text-light col-8 my-2"><strong>Ajouter un nouveau produit:</strong></p>
+                        <button className="btn btn-success offset-1 col-2" onClick={() => this.addProduct()}>
+                            <RiFileAddLine size={30}/>
+                        </button>
+                    </div>
                 </div>
                 </>
     }
